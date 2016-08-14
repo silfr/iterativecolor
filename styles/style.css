@@ -1,0 +1,162 @@
+html,
+body {
+    color: #f1f1f1;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 1.5em;
+    text-shadow: 0 0 2px #e4e4e4;
+}
+
+h2 {
+    color: #e4e4e4;
+    font-size: 1em;
+    text-shadow: 0 0 2px #c6c6c6;
+    align-self: center;
+}
+
+h3 {
+    font-size: 1em;
+    /*border-bottom: 1px solid #f1f1f1;
+    width: 100%;*/
+}
+
+#hu,
+#sa,
+#li {
+    margin-left: 1em;
+}
+
+.row {
+    display: flex;
+}
+
+.container-fluid {
+    height: 100%;
+}
+
+.box {
+    /*    width: 100%;
+*/
+    border: 1px solid #101010;
+    border-radius: 5px;
+    margin-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    box-shadow: inset 2px 2px 2px #464646, 2px 2px 2px #1a1a1a;
+}
+
+.box.active {
+    background-color: #262626;
+    box-shadow: 2px 2px 2px #464646, inset 2px 2px 2px #1a1a1a;
+}
+
+.ui-slider-handle:focus {
+    background-color: #f6f6f6;
+    border-color: #c5c5c5;
+}
+
+.ui-slider {
+    width: 100%;
+}
+
+.flexy {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+}
+
+.hslbox {
+    margin-right: 1em;
+}
+
+#app {
+    height: 100%;
+}
+
+#label-palette {
+    background-color: #101010;
+}
+
+#label-operations {
+    background-color: #101010;
+    border-left: 1px solid #101010;
+}
+
+#col1 {
+    background-color: #464646;
+    overflow: auto;
+}
+
+#col2 {
+    background-color: #383838;
+    border-left: 1px solid #101010;
+    overflow: auto;
+}
+
+#footer-undo {
+    background-color: #1a1a1a;
+}
+
+#footer-license {
+    background-color: #1a1a1a;
+    border-left: 1px solid #101010;
+}
+
+#custbutt {
+    padding-bottom: 5px;
+}
+
+.btn {}
+
+input {
+    text-align: center;
+    color: black;
+}
+
+#customamount {
+    height: 1.5em;
+}
+
+#row1 {
+    height: 8%;
+}
+
+#row2 {
+    height: 84%;
+}
+
+#row3 {
+    height: 8%;
+}
+
+#slider1 {
+    background: linear-gradient(to right, red, yellow, lime, aqua, blue, fuchsia, red);
+}
+
+#slider2 {
+    background: linear-gradient(to right, #7f7f7f, red);
+}
+
+#slider3 {
+    background: linear-gradient(to right, black, red, white);
+}
+
+input[type=number] {
+    width: 4em;
+}
+
+a,
+a:hover,
+a:active,
+a:link,
+a:visited {
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+}
