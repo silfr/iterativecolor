@@ -71,7 +71,7 @@
                             <div class="btn-group" data-toggle="buttons">
                                 <label class="btn btn-default" id="custbutt" onclick="checkZeroOrNull();">
                                     <input type="radio">
-                                    <input type="text" placeholder="cust" maxlength=2 size=2 id="customamount" onkeypress="return isNumb(event);return false;" oninput="setCustomPercent();"></input>%
+                                    <input type="text" placeholder="cust" maxlength=2 size=2 id="customamount" onkeypress="return isNumb(event);return false;" oninput="setCustomPercent();">%
                                 </label>
                                 <label class="btn btn-default" id="btn25" onclick="setPercent(25);return false;">
                                     <input type="radio">25%
@@ -89,7 +89,7 @@
 
                             <p>
                                 <div>
-                                    <label class="btn btn-default" id="applybutton" role="button">apply
+                                    <label class="btn btn-default" id="applybutton" role="button">apply</label>
                                 </div>
                                 <br />
                     </div>
@@ -100,8 +100,22 @@
                     <h2><span class="fa fa-undo fa-lg"></span> &nbsp; <span class="fa fa-repeat fa-lg"></span></h2>
                 </div>
                 <div class="col-xs-4" id="footer-license">
-                    <h2><a href="LICENSE" target="_blank">License</a> &nbsp;- &nbsp;<a href="https://github.com/silfr/iterativeColor" target="_blank"><span class="fa fa-github fa-lg"></span></a> &nbsp;<a href="https://twitter.com/silpwn" target="_blank"><span class="fa fa-twitter fa-lg"></span></a><a href="about.htm" target="_blank"><span class="fa fa-question fa-lg pull-right"></span></a></h2>
+                    <h2><a href="LICENSE" target="_blank">License</a> &nbsp;- &nbsp;<a href="https://github.com/silfr/iterativeColor" target="_blank"><span class="fa fa-github fa-lg"></span></a> &nbsp;<a href="https://twitter.com/silpwn" target="_blank"><span class="fa fa-twitter fa-lg"></span></a><a href="#" data-toggle="modal" data-target="#help"><span class="fa fa-question fa-lg pull-right"></span></a></h2>
                 </div>
+            </div>
+        </div>
+        <div id="help" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" id="mod-content">
+                        <button aria-label="Close Help Modal" type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">iterativecolor Help</h4>
+                    </div>
+                    <div class="modal-body" id="mod-body">
+                        <p>Put Help documentation here</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

@@ -146,6 +146,12 @@ input {
 #slider3 {
     background: linear-gradient(to right, black, red, white);
 }
+#mod-content {
+    background-color: #383838;
+}
+#mod-body {
+    background-color: #464646;
+}
 
 input[type=number] {
     width: 4em;
