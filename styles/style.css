@@ -74,7 +74,38 @@ h3 {
 .hslbox {
     margin-right: 1em;
 }
+#palette-div {
+    text-align: justify;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+}
+.color {
+    float: left;
+    height: 4em;
+    width: 2em;
+}
+.palette {
+    display: inline-block;
+}
+.palette:hover {
+    box-shadow: 0 0 4px #c6c6c6;
+}
+#fifty-percent {
+/*    background-color: darkcyan;*/
+}
 
+#color-div {
+    clear: both;
+    position: relative;
+    left: 0;
+}
+.stretch {
+    width: 100%;
+    display: inline-block;
+}
+#message {
+    text-align: center;
+}
 #app {
     height: 100%;
 }
@@ -91,6 +122,7 @@ h3 {
 #col1 {
     background-color: #464646;
     overflow: auto;
+    padding: 1em;
 }
 
 #col2 {
@@ -134,7 +166,6 @@ input {
 #row3 {
     height: 8%;
 }
-
 #slider1 {
     background: linear-gradient(to right, red, yellow, lime, aqua, blue, fuchsia, red);
 }
@@ -146,10 +177,12 @@ input {
 #slider3 {
     background: linear-gradient(to right, black, red, white);
 }
-#mod-content {
+
+.modal-header {
     background-color: #383838;
 }
-#mod-body {
+
+.modal-body {
     background-color: #464646;
 }
 
