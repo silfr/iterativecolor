@@ -10,6 +10,9 @@ var appbtn = document.getElementById('applybutton');
 var addbtn = document.getElementById('addbutton');
 var subbtn = document.getElementById('subtractbutton');
 var palLen = 5;
+var colorPrintStr;
+
+var initialPal;
 
 var palette = "";
 
@@ -22,29 +25,59 @@ var colors = [
     ["#663399", "#6A5ACD", "#9370DB", "#BA55D3", "#DA70D6"]
 ];
 
-function colorPrint(pal) {
+function initialPrint(colorspal) {
+    /*var str;
+    str = str + " <div class='palette'> ";
+    for (var x = 0; x < palLen; x++) {
+        str = str + " <div class='color'" + " style='background-color:" + pal[x] + " </div> ";
+    }
+    str = str + " </div>";
+    return str;
+    for (var x = 0; x < pal.innerHTML.length; x++) {
+        if ((pal.innerHTML.charCodeAt(x) > 31) && (pal.innerHTML.charCodeAt(x) !== 35)) {
+            console.log("yes ");
+        }
+        console.log(pal.innerHTML.charCodeAt(x));
+    }*/
+    document.getElementById('message').innerHTML = "Ready!";
+//    var p = clickedDiv.parentElement.innerHTML;
+//    document.getElementById('palette-div').innerHTML = p;
+//    document.getElementById('color-select').innerHTML = p;
+//        $(".box").removeClass("active");
+//    $(".color").addClass("color-ind");
+//    $(".color-ind").removeClass("color");
+    initialPal = colors[colorspal];
+    document.getElementById('palette-div').innerHTML = colorPrint(initialPal);
+    document.getElementById('color-select').innerHTML = colorPrint(initialPal);
+}
 
+function colorPrint(pal) {
+    colorPrintStr = "";
+    for (var x = 0; x < palLen; x++) {
+        colorPrintStr += " <div class='color-ind'" + " style='background-color:" + pal[x] + "' onClick='colSelect(this)'> </div>";
+    }
+    return colorPrintStr;
+}
+
+function colSelect(col) {
+    if (col.className == "color-ind selected") {
+        col.className = "color-ind";
+    }
+    else {
+        col.className = "color-ind selected";
+    }
 }
 
 for (var y = 0; y < colors.length; y++) {
-    palette = palette + " <div class='palette'> "
+    palette = palette + " <div class='palette'> ";
     for (var x = 0; x < palLen; x++) {
-        palette = palette + " <div class='color'" + " style='background-color:" + colors[y][x] + "' onClick='colorInfo(this)'>  </div>";
+        palette = palette + " <div class='color'" + " style='background-color:" + colors[y][x] + "' onClick='initialPrint(" + y + ")'>  </div>";
 //        document.getElementById('palette-div').innerHTML = palette;
     }
     palette = palette + " </div>";
 }
 palette = palette + "<span class='stretch'></span>";
 document.getElementById('palette-div').innerHTML = palette;
-
-function initPal() {
-    
-}
-
-function colorInfo(clickedDiv) {
-    // Change #message
-    $('#message').html("Ready!")
-}
 
 function isNumb(evt) {
     evt = (evt) ? evt : window.event;

@@ -74,12 +74,15 @@ h3 {
 .hslbox {
     margin-right: 1em;
 }
+.selected {
+    box-shadow: 0 .75em .5em -.5em #e4e4e4;
+}
 #palette-div {
     text-align: justify;
     -ms-text-justify: distribute-all-lines;
     text-justify: distribute-all-lines;
 }
-.color {
+.color, .color-ind {
     float: left;
     height: 4em;
     width: 2em;
@@ -89,6 +92,9 @@ h3 {
 }
 .palette:hover {
     box-shadow: 0 0 4px #c6c6c6;
+}
+.color-ind:hover {
+    
 }
 #fifty-percent {
 /*    background-color: darkcyan;*/
