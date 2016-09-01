@@ -74,44 +74,49 @@ h3 {
 .hslbox {
     margin-right: 1em;
 }
+
 .selected {
     box-shadow: 0 .75em .5em -.5em #e4e4e4;
 }
+
 #palette-div {
     text-align: justify;
     -ms-text-justify: distribute-all-lines;
     text-justify: distribute-all-lines;
 }
-.color, .color-ind {
+
+.color,
+.color-ind {
     float: left;
     height: 4em;
     width: 2em;
 }
+
 .palette {
     display: inline-block;
 }
+
 .palette:hover {
     box-shadow: 0 0 4px #c6c6c6;
 }
-.color-ind:hover {
-    
-}
-#fifty-percent {
-/*    background-color: darkcyan;*/
-}
+
+.color-ind:hover {}
 
 #color-div {
     clear: both;
     position: relative;
     left: 0;
 }
+
 .stretch {
     width: 100%;
     display: inline-block;
 }
+
 #message {
     text-align: center;
 }
+
 #app {
     height: 100%;
 }
@@ -172,6 +177,7 @@ input {
 #row3 {
     height: 8%;
 }
+
 #slider1 {
     background: linear-gradient(to right, red, yellow, lime, aqua, blue, fuchsia, red);
 }

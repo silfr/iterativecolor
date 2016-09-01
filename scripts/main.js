@@ -1,14 +1,15 @@
 var operator = 1;
 var validPercent = true;
 var percent = 50;
+var h = 128;
+var s = 0;
+var l = 0;
 var allValid;
 var colBox = document.getElementById('color');
 var hueBox = document.getElementById('hue');
 var satBox = document.getElementById('saturation');
 var ligBox = document.getElementById('lightness');
-var appbtn = document.getElementById('applybutton');
-var addbtn = document.getElementById('addbutton');
-var subbtn = document.getElementById('subtractbutton');
+var appBtn = document.getElementById('apply-button');
 var palLen = 5;
 var colorPrintStr;
 
@@ -26,26 +27,7 @@ var colors = [
 ];
 
 function initialPrint(colorspal) {
-    /*var str;
-    str = str + " <div class='palette'> ";
-    for (var x = 0; x < palLen; x++) {
-        str = str + " <div class='color'" + " style='background-color:" + pal[x] + " </div> ";
-    }
-    str = str + " </div>";
-    return str;
-    for (var x = 0; x < pal.innerHTML.length; x++) {
-        if ((pal.innerHTML.charCodeAt(x) > 31) && (pal.innerHTML.charCodeAt(x) !== 35)) {
-            console.log("yes ");
-        }
-        console.log(pal.innerHTML.charCodeAt(x));
-    }*/
     document.getElementById('message').innerHTML = "Ready!";
-//    var p = clickedDiv.parentElement.innerHTML;
-//    document.getElementById('palette-div').innerHTML = p;
-//    document.getElementById('color-select').innerHTML = p;
-//        $(".box").removeClass("active");
-//    $(".color").addClass("color-ind");
-//    $(".color-ind").removeClass("color");
     initialPal = colors[colorspal];
     document.getElementById('palette-div').innerHTML = colorPrint(initialPal);
     document.getElementById('color-select').innerHTML = colorPrint(initialPal);
@@ -62,8 +44,7 @@ function colorPrint(pal) {
 function colSelect(col) {
     if (col.className == "color-ind selected") {
         col.className = "color-ind";
-    }
-    else {
+    } else {
         col.className = "color-ind selected";
     }
 }
@@ -72,12 +53,15 @@ for (var y = 0; y < colors.length; y++) {
     palette = palette + " <div class='palette'> ";
     for (var x = 0; x < palLen; x++) {
         palette = palette + " <div class='color'" + " style='background-color:" + colors[y][x] + "' onClick='initialPrint(" + y + ")'>  </div>";
-//        document.getElementById('palette-div').innerHTML = palette;
     }
     palette = palette + " </div>";
 }
 palette = palette + "<span class='stretch'></span>";
 document.getElementById('palette-div').innerHTML = palette;
+
+function processIteration() {
+
+}
 
 function isNumb(evt) {
     evt = (evt) ? evt : window.event;
@@ -137,28 +121,65 @@ function checkZeroOrNull() {
 function boxSelect(theBox) {
     $(".box").removeClass("active");
     $(theBox).addClass("active");
+    h = 0;
+    s = 0;
+    l = 0;
+    if (theBox.getAttribute('id') == "hue") {
+        updateH();
+    }
+    if (theBox.getAttribute('id') == "saturation") {
+        updateS();
+    }
+    if (theBox.getAttribute('id') == "lightness") {
+        updateL();
+    }
+    logHSL();
 }
 
-appbtn.onclick = function () {
+function logHSL() {
+    console.log("h = " + h + " s = " + s + " l = " + l);
+}
+function updateH() {
+    h = document.getElementById('hu').value;
+    s = 0;
+    l = 0;
+    logHSL();
+}
+
+function updateS() {
+    h = 0;
+    s = document.getElementById('sa').value;
+    l = 0;
+    logHSL();
+}
+
+function updateL() {
+    h = 0;
+    s = 0;
+    l = document.getElementById('li').value;
+    logHSL();
+}
+
+appBtn.onclick = function () {
     allValid = true;
     if ((parseInt($(".hslbox").val()) < 0) || (parseInt($(".hslbox").val()) > 255)) {
         allValid = false;
         window.alert("Value must be between 0 and 255.");
     } else if (percent == null) {
         allValid = false;
-        window.alert("Percent must not be null.");
+        window.alert("Percent must not be zero or null.");
     }
     if (allValid) {
-        //put moar stuff here
-        console.log('stufs gud');
+        console.log('Things are good. Running processIteration()');
+        processIteration();
     }
 }
 
-addbtn.onclick = function () {
+document.getElementById('add-button').onclick = function () {
     operator = 1;
 }
 
-subbtn.onclick = function () {
+document.getElementById('subtract-button').onclick = function () {
     operator = -1;
 }
 
@@ -211,16 +232,16 @@ $("#slider3").slider({
 
 $("#hu").change(function () {
     var value = this.value;
-    console.log(value);
+    updateH();
     $("#slider1").slider("value", parseInt(value));
 });
 $("#sa").change(function () {
     var value = this.value;
-    console.log(value);
+    updateS();
     $("#slider2").slider("value", parseInt(value));
 });
 $("#li").change(function () {
     var value = this.value;
-    console.log(value);
+    updateL();
     $("#slider3").slider("value", parseInt(value));
 });
