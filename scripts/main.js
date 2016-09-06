@@ -12,10 +12,12 @@ var ligBox = document.getElementById('lightness');
 var appBtn = document.getElementById('apply-button');
 var palLen = 5;
 var colorPrintStr;
+var colsSelected = 0;
 
 var initialPal;
 
 var palette = "";
+var avgPal = [];
 
 var colors = [
     ["#A52A2A", "#D2691E", "#FF7F50", "#DEB887", "#FFF8DC"],
@@ -42,10 +44,33 @@ function colorPrint(pal) {
 }
 
 function colSelect(col) {
+    var b = false;
+    if (col.parentElement.getAttribute('id') == "color-select") {
+        b = true;
+    }
     if (col.className == "color-ind selected") {
         col.className = "color-ind";
+        if (b) {
+            colsSelected -= 1;
+            for (var i = 0; i < avgPal.length; i++) {
+                var a = avgPal.indexOf(col.style.backgroundColor);
+                if (a != -1) {
+                    avgPal.splice(a, 1);
+                }
+            }
+        }
     } else {
         col.className = "color-ind selected";
+        if (b) {
+            colsSelected += 1;
+            document.getElementById("avg-preview").style.visibility = "visible";
+            avgPal.push(col.style.backgroundColor);
+        }
+    }
+    if (colsSelected > 0) {
+        document.getElementById("avg-preview").style.backgroundColor = chroma.average(avgPal);
+    } else {
+        document.getElementById("avg-preview").style.visibility = "hidden";
     }
 }
 
@@ -135,7 +160,6 @@ function boxSelect(theBox) {
     }
     logHSL();
 }
-
 function logHSL() {
     console.log("h = " + h + " s = " + s + " l = " + l);
 }
@@ -162,12 +186,19 @@ function updateL() {
 
 appBtn.onclick = function () {
     allValid = true;
-    if ((parseInt($(".hslbox").val()) < 0) || (parseInt($(".hslbox").val()) > 255)) {
+    if (h < 0 || h > 255 || s < 0 || s > 255 || s < 0 || s > 255) {
         allValid = false;
         window.alert("Value must be between 0 and 255.");
     } else if (percent == null) {
         allValid = false;
         window.alert("Percent must not be zero or null.");
+    }
+    if (document.getElementById("color").className == "box active") {
+        var avgColor = chroma(document.getElementById("avg-preview").style.backgroundColor).rgb();
+        h = avgColor[0];
+        s = avgColor[1];
+        l = avgColor[2];
+        logHSL();
     }
     if (allValid) {
         console.log('Things are good. Running processIteration()');

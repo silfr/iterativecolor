@@ -22,6 +22,7 @@ h3 {
     font-size: 1em;
     /*border-bottom: 1px solid #f1f1f1;
     width: 100%;*/
+    display: inline-block;
 }
 
 #hu,
@@ -84,7 +85,14 @@ h3 {
     -ms-text-justify: distribute-all-lines;
     text-justify: distribute-all-lines;
 }
-
+#avg-preview {
+    visibility: hidden;
+    background-color: hotpink;
+    border: 1px solid #101010;
+    height: 1em;
+    width: 1em;
+    display: inline-block;
+}
 .color,
 .color-ind {
     float: left;
