@@ -29,6 +29,7 @@ var colors = [
 ];
 
 function initialPrint(colorspal) {
+    appBtn.className = "btn btn-default";
     document.getElementById('message').innerHTML = "Ready!";
     initialPal = colors[colorspal];
     document.getElementById('palette-div').innerHTML = colorPrint(initialPal);
@@ -199,6 +200,10 @@ appBtn.onclick = function () {
         s = avgColor[1];
         l = avgColor[2];
         logHSL();
+        if (document.getElementById("avg-preview").style.visibility == "hidden") {
+            allValid = false;
+            window.alert("Choose a color.");
+        }
     }
     if (allValid) {
         console.log('Things are good. Running processIteration()');
