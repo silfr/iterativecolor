@@ -12,6 +12,7 @@ var ligBox = document.getElementById('lightness');
 var appBtn = document.getElementById('apply-button');
 var palLen = 5;
 var colorPrintStr;
+var colsleft = 0;
 var colsSelected = 0;
 
 var initialPal;
@@ -29,7 +30,6 @@ var colors = [
 ];
 
 function initialPrint(colorspal) {
-    appBtn.className = "btn btn-default";
     document.getElementById('message').innerHTML = "Ready!";
     initialPal = colors[colorspal];
     document.getElementById('palette-div').innerHTML = colorPrint(initialPal);
@@ -45,6 +45,7 @@ function colorPrint(pal) {
 }
 
 function colSelect(col) {
+    //    <<< palette-div   color-select >>>
     var b = false;
     if (col.parentElement.getAttribute('id') == "color-select") {
         b = true;
@@ -52,21 +53,31 @@ function colSelect(col) {
     if (col.className == "color-ind selected") {
         col.className = "color-ind";
         if (b) {
-            colsSelected -= 1;
+            colsSelected--;
             for (var i = 0; i < avgPal.length; i++) {
                 var a = avgPal.indexOf(col.style.backgroundColor);
                 if (a != -1) {
                     avgPal.splice(a, 1);
                 }
             }
+        } else {
+            colsleft--;
+            if (colsleft < 1) {
+                appBtn.className = "btn btn-default disabled";
+            }
         }
+        
     } else {
         col.className = "color-ind selected";
         if (b) {
-            colsSelected += 1;
+            colsSelected++;
             document.getElementById("avg-preview").style.visibility = "visible";
             avgPal.push(col.style.backgroundColor);
+        } else {
+            colsleft++;
+            appBtn.className = "btn btn-default";
         }
+        
     }
     if (colsSelected > 0) {
         document.getElementById("avg-preview").style.backgroundColor = chroma.average(avgPal);
@@ -86,7 +97,8 @@ palette = palette + "<span class='stretch'></span>";
 document.getElementById('palette-div').innerHTML = palette;
 
 function processIteration() {
-
+    //    <<< palette-div   color-select >>>
+    
 }
 
 function isNumb(evt) {
