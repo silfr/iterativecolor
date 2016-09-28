@@ -12,8 +12,8 @@ var ligBox = document.getElementById('lightness');
 var appBtn = document.getElementById('apply-button');
 var palLen = 5;
 var colorPrintStr;
-var colsleft = 0;
-var colsSelected = 0;
+var colsSelLeft = 0;
+var colsSelRight = 0;
 
 var initialPal;
 
@@ -53,7 +53,7 @@ function colSelect(col) {
     if (col.className == "color-ind selected") {
         col.className = "color-ind";
         if (b) {
-            colsSelected--;
+            colsSelRight--;
             for (var i = 0; i < avgPal.length; i++) {
                 var a = avgPal.indexOf(col.style.backgroundColor);
                 if (a != -1) {
@@ -61,8 +61,8 @@ function colSelect(col) {
                 }
             }
         } else {
-            colsleft--;
-            if (colsleft < 1) {
+            colsSelLeft--;
+            if (colsSelLeft < 1) {
                 appBtn.className = "btn btn-default disabled";
             }
         }
@@ -70,16 +70,16 @@ function colSelect(col) {
     } else {
         col.className = "color-ind selected";
         if (b) {
-            colsSelected++;
+            colsSelRight++;
             document.getElementById("avg-preview").style.visibility = "visible";
             avgPal.push(col.style.backgroundColor);
         } else {
-            colsleft++;
+            colsSelLeft++;
             appBtn.className = "btn btn-default";
         }
         
     }
-    if (colsSelected > 0) {
+    if (colsSelRight > 0) {
         document.getElementById("avg-preview").style.backgroundColor = chroma.average(avgPal);
     } else {
         document.getElementById("avg-preview").style.visibility = "hidden";
